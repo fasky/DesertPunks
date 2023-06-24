@@ -1,0 +1,29 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/TurretEnemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Gun0Base.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/EnemyDeathDissolve.tres" type="Material" id=3]
+[ext_resource path="res://Scenes/MainGunEnemy.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Explosion.tscn" type="PackedScene" id=6]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 19.0
+
+[node name="TurretEnemy" type="StaticBody2D" groups=["Enemy"]]
+script = ExtResource( 1 )
+bulletPlasma = ExtResource( 5 )
+
+[node name="MainGun" type="Sprite" parent="."]
+material = ExtResource( 3 )
+scale = Vector2( 2, 2 )
+z_index = 5
+texture = ExtResource( 2 )
+offset = Vector2( 5, 0 )
+script = ExtResource( 4 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Explosion" parent="." instance=ExtResource( 6 )]
+timed = true

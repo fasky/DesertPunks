@@ -1,0 +1,10 @@
+[gd_scene format=2]
+
+[node name="BulletHoleGround" type="ColorRect"]
+margin_left = 24.0
+margin_top = -5.0
+margin_right = 32.0
+margin_bottom = 3.0
+rect_rotation = 45.0
+rect_pivot_offset = Vector2( 3, 3 )
+color = Color( 0, 0, 0, 0.168627 )

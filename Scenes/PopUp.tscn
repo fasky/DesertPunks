@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/UI/UpgradeBase.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/PopUpper.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/popupbuttonlabel.tres" type="DynamicFont" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[node name="PopUp" type="Button"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -32.0
+margin_top = -32.0
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+icon = ExtResource( 1 )
+flat = true
+icon_align = 1
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 1.51562
+anchor_right = 0.5
+anchor_bottom = 1.51562
+margin_left = -22.5
+margin_top = -20.0
+margin_right = 22.5
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0.176471, 0.176471, 0.176471, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Type"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="." to="." method="_on_VehiclePop_pressed"]

@@ -1,0 +1,199 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://Scenes/Placeable.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Bomb.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Nails.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/MegaBomb.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Explosion.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Sprites/Nuke.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/RangeCircle.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Veh0.png" type="Texture" id=8]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 327.038
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 3 )
+region = Rect2( 0, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 3 )
+region = Rect2( 8, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 3 )
+region = Rect2( 16, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 3 )
+region = Rect2( 24, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 3 )
+region = Rect2( 32, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 3 )
+region = Rect2( 40, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 3 )
+region = Rect2( 48, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 3 )
+region = Rect2( 56, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 3 )
+region = Rect2( 64, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 3 )
+region = Rect2( 72, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 3 )
+region = Rect2( 80, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 3 )
+region = Rect2( 88, 0, 8, 76 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 3 )
+region = Rect2( 96, 0, 8, 76 )
+
+[sub_resource type="SpriteFrames" id=19]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 3.0
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 539.093
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 2, 76 )
+
+[sub_resource type="CircleShape2D" id=5]
+radius = 950.026
+
+[sub_resource type="CircleShape2D" id=20]
+radius = 105.019
+
+[node name="Placeable" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="MineBombArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MineBombArea2D"]
+shape = SubResource( 1 )
+disabled = true
+
+[node name="BombScatter" type="Sprite" parent="."]
+process_priority = 6
+visible = false
+z_index = 6
+texture = ExtResource( 4 )
+
+[node name="Range" type="Sprite" parent="BombScatter"]
+modulate = Color( 1, 1, 1, 0.470588 )
+scale = Vector2( 3.2, 3.2 )
+texture = ExtResource( 7 )
+
+[node name="MegaBomb" type="Sprite" parent="."]
+visible = false
+z_index = 6
+texture = ExtResource( 2 )
+
+[node name="Range" type="Sprite" parent="MegaBomb"]
+modulate = Color( 1, 1, 1, 0.470588 )
+scale = Vector2( 5.4, 5.4 )
+texture = ExtResource( 7 )
+
+[node name="BlackHoleSprite" type="Sprite" parent="."]
+visible = false
+z_index = 6
+texture = ExtResource( 6 )
+
+[node name="Range" type="Sprite" parent="BlackHoleSprite"]
+modulate = Color( 1, 1, 1, 0.470588 )
+scale = Vector2( 9.5, 9.5 )
+texture = ExtResource( 7 )
+
+[node name="Mine" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 2 )
+
+[node name="EnemyBomb" type="Sprite" parent="."]
+process_priority = 6
+visible = false
+z_index = 6
+texture = ExtResource( 2 )
+
+[node name="Range" type="Sprite" parent="EnemyBomb"]
+modulate = Color( 1, 1, 1, 0.470588 )
+scale = Vector2( 1.05, 1.05 )
+texture = ExtResource( 7 )
+
+[node name="Nails" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 2, 2 )
+frames = SubResource( 19 )
+speed_scale = 10.0
+
+[node name="WormRock" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 8 )
+
+[node name="MineTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MineTrigger"]
+shape = SubResource( 2 )
+disabled = true
+
+[node name="MegaBombArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MegaBombArea2D"]
+shape = SubResource( 3 )
+disabled = true
+
+[node name="NailsArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NailsArea2D"]
+shape = SubResource( 4 )
+disabled = true
+
+[node name="BlackHole" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackHole"]
+shape = SubResource( 5 )
+disabled = true
+
+[node name="EnemyBombTrigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyBombTrigger"]
+shape = SubResource( 20 )
+disabled = true
+
+[node name="Explosion" parent="." instance=ExtResource( 5 )]
+scale = Vector2( 1, 1 )
+z_index = 6
+timed = true
+
+[connection signal="body_entered" from="MineBombArea2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="body_exited" from="MineBombArea2D" to="." method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="MineTrigger" to="." method="_on_MineTrigger_body_entered"]
+[connection signal="body_entered" from="MegaBombArea2D" to="." method="_on_MegaBombArea2D_body_entered"]
+[connection signal="body_exited" from="MegaBombArea2D" to="." method="_on_MegaBombArea2D_body_exited"]
+[connection signal="body_entered" from="NailsArea2D" to="." method="_on_NailsArea2D_body_entered"]
+[connection signal="body_entered" from="BlackHole" to="." method="_on_BlackHole_body_entered"]
+[connection signal="body_entered" from="EnemyBombTrigger" to="." method="_on_EnemyBombTrigger_body_entered"]
+[connection signal="body_exited" from="EnemyBombTrigger" to="." method="_on_EnemyBombTrigger_body_exited"]
+[connection signal="animation_finished" from="Explosion" to="." method="_on_Explosion_animation_finished"]

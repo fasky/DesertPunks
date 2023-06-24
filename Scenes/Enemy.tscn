@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Scenes/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Veh0.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/MainGunEnemy.gd" type="Script" id=4]
+[ext_resource path="res://Sprites/trail.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Trail.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/EnemyDeathDissolve.tres" type="Material" id=7]
+[ext_resource path="res://Sprites/Gun0Base.png" type="Texture" id=8]
+[ext_resource path="res://Scenes/Explosion.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Scenes/Placeable.tscn" type="PackedScene" id=10]
+
+[sub_resource type="ParticlesMaterial" id=6]
+resource_local_to_scene = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = 360.0
+angle_random = 1.0
+scale = 2.0
+color = Color( 0.611765, 0.611765, 0.611765, 1 )
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+float random(vec2 uv) {
+	return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 438.5453);
+}
+
+uniform float sensitivity : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	// Get size of texture in pixels
+	float size_x = float(textureSize(TEXTURE, 0).x);
+	float size_y = float(textureSize(TEXTURE, 0).y);
+	// 
+	vec4 pixelColor = texture(TEXTURE, UV);
+	// Create a new \"UV\" which remaps every UV value to a snapped pixel value
+	vec2 UVr = vec2(floor(UV.x*size_x)/size_x, floor(UV.y*size_y)/size_y);
+	// Determine whether pixel should be visible or not
+	float visible = step(sensitivity, random(UVr));
+	// Draw the pixel, or not depending on if it is visible or not
+	COLOR = vec4(pixelColor.r, pixelColor.g, pixelColor.b, min(visible, pixelColor.a));
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 9 )
+shader_param/sensitivity = 0.0
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 23, 17 )
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 92.0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 63, 18 )
+
+[node name="Enemy" type="KinematicBody2D" groups=["Enemy"]]
+z_index = 1
+script = ExtResource( 1 )
+bulletPlasma = ExtResource( 3 )
+enemyBomb = ExtResource( 10 )
+
+[node name="Trail" type="Line2D" parent="."]
+width = 40.0
+default_color = Color( 0, 0, 0, 0.0705882 )
+texture = ExtResource( 5 )
+texture_mode = 2
+script = ExtResource( 6 )
+trailLength = 50
+targetPath = NodePath("..")
+
+[node name="SmokeSmall" type="Particles2D" parent="."]
+position = Vector2( -19, 7 )
+rotation = 1.5708
+emitting = false
+amount = 15
+process_material = SubResource( 6 )
+
+[node name="SmokeSmall2" type="Particles2D" parent="SmokeSmall"]
+position = Vector2( -2, 1 )
+emitting = false
+amount = 15
+process_material = SubResource( 6 )
+
+[node name="SmokeLarge" type="Particles2D" parent="."]
+position = Vector2( -58, 14 )
+rotation = 1.5708
+emitting = false
+amount = 15
+process_material = SubResource( 6 )
+
+[node name="SmokeLarge2" type="Particles2D" parent="SmokeLarge"]
+position = Vector2( -2, 1 )
+emitting = false
+amount = 15
+process_material = SubResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="." groups=["Enemy"]]
+material = SubResource( 7 )
+z_index = 1
+texture = ExtResource( 2 )
+
+[node name="MainGun" type="Sprite" parent="."]
+material = ExtResource( 7 )
+z_index = 5
+texture = ExtResource( 8 )
+offset = Vector2( 5, 0 )
+script = ExtResource( 4 )
+
+[node name="SmallColl" type="CollisionShape2D" parent="." groups=["Enemy", "EnemyCollider"]]
+position = Vector2( 1, 0 )
+shape = SubResource( 1 )
+disabled = true
+
+[node name="Nearby" type="Area2D" parent="." groups=["NearbyEnemies"]]
+
+[node name="NearbyEnemies" type="CollisionShape2D" parent="Nearby"]
+shape = SubResource( 2 )
+
+[node name="LargeColl" type="CollisionShape2D" parent="." groups=["Enemy", "EnemyCollider"]]
+shape = SubResource( 3 )
+disabled = true
+
+[node name="Explosion" parent="." instance=ExtResource( 9 )]
+timed = true
+
+[connection signal="tree_exiting" from="." to="." method="_on_Enemy_tree_exiting"]
+[connection signal="body_entered" from="Nearby" to="." method="_on_Nearby_body_entered"]
+[connection signal="body_exited" from="Nearby" to="." method="_on_Nearby_body_exited"]

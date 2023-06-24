@@ -1,0 +1,21 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform vec2 target = vec2(0.5);
+uniform float intensity: hint_range(0.0, 1.0);
+uniform float BWintensity: hint_range(0.0, 100.0);
+
+uniform float offset = 1.0;
+
+void fragment(){
+	COLOR.rgb = textureLod(SCREEN_TEXTURE, SCREEN_UV, 6.0 * intensity * (distance(target, UV)/sqrt(2.0))).rgb;
+	float avg = (COLOR.r + COLOR.g + COLOR.b) / BWintensity;
+	COLOR = vec4(avg, avg, avg, 1.0);
+	
+	vec4 green_channel = texture(SCREEN_TEXTURE, SCREEN_UV);
+	vec4 red_channel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x + (offset * SCREEN_PIXEL_SIZE.x), SCREEN_UV.y));
+	vec4 blue_channel = texture(SCREEN_TEXTURE, vec2(SCREEN_UV.x - (offset * SCREEN_PIXEL_SIZE.x), SCREEN_UV.y));
+	COLOR = vec4(red_channel.r, green_channel.g, blue_channel.b, 1.0);
+}"

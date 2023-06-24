@@ -1,0 +1,1382 @@
+[gd_scene load_steps=77 format=2]
+
+[ext_resource path="res://fonts/ScrapLabeltxt.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/CanvasLayer.gd" type="Script" id=2]
+[ext_resource path="res://fonts/SpecialDesc.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Sprites/UI/UpgradeBoost.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/VehicleUpgrades.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/PopUp.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Sprites/UI/DoubleHealth.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/UI/DoubleArmor.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/UI/SlowTime.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/UI/ChainShot.png" type="Texture" id=10]
+[ext_resource path="res://Shaders/BlurBW.tres" type="Shader" id=11]
+[ext_resource path="res://fonts/pauseFont.tres" type="DynamicFont" id=12]
+[ext_resource path="res://Shaders/ChromaticAberrationSprite.tres" type="Shader" id=13]
+[ext_resource path="res://Sprites/UI/UpgradeBG.png" type="Texture" id=14]
+[ext_resource path="res://fonts/scrapUGMenyText.tres" type="DynamicFont" id=15]
+[ext_resource path="res://Sprites/UI/veh2.png" type="Texture" id=16]
+[ext_resource path="res://fonts/connection_ii/ConnectionII.tres" type="DynamicFont" id=17]
+[ext_resource path="res://Sprites/UI/CloseButton.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/UI/RamIcon.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/UI/2x5Health.png" type="Texture" id=20]
+[ext_resource path="res://Sprites/UI/1x1Health.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/UI/1x5Health.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/UI/1xHealth.png" type="Texture" id=23]
+[ext_resource path="res://Sprites/UI/1x3Health.png" type="Texture" id=24]
+[ext_resource path="res://Sprites/UI/2xHealth.png" type="Texture" id=25]
+[ext_resource path="res://Sprites/UI/NoUp.png" type="Texture" id=26]
+[ext_resource path="res://Sprites/UI/GunUpBase.png" type="Texture" id=27]
+[ext_resource path="res://Sprites/UI/GunUp1.png" type="Texture" id=28]
+[ext_resource path="res://Sprites/UI/GunUp3.png" type="Texture" id=29]
+[ext_resource path="res://Sprites/UI/GunUp2.png" type="Texture" id=30]
+[ext_resource path="res://Sprites/UI/GunUp5.png" type="Texture" id=31]
+[ext_resource path="res://Sprites/UI/GunUp4.png" type="Texture" id=32]
+[ext_resource path="res://Sprites/UI/AutoUp5.png" type="Texture" id=33]
+[ext_resource path="res://Sprites/UI/AutoUp1.png" type="Texture" id=34]
+[ext_resource path="res://Sprites/UI/AutoUp2.png" type="Texture" id=35]
+[ext_resource path="res://Sprites/UI/AutoUp3.png" type="Texture" id=36]
+[ext_resource path="res://Sprites/UI/AutoUp4.png" type="Texture" id=37]
+[ext_resource path="res://Sprites/UI/ArmorUp1x.png" type="Texture" id=38]
+[ext_resource path="res://Sprites/UI/ArmorUp2x5.png" type="Texture" id=39]
+[ext_resource path="res://Sprites/UI/ArmorUp1x3.png" type="Texture" id=40]
+[ext_resource path="res://Sprites/UI/ArmorUp1x5.png" type="Texture" id=41]
+[ext_resource path="res://Sprites/UI/ArmorUp1x1.png" type="Texture" id=42]
+[ext_resource path="res://Sprites/UI/NukeUpIcon.png" type="Texture" id=43]
+[ext_resource path="res://Sprites/UI/BombUpIcon.png" type="Texture" id=44]
+[ext_resource path="res://Sprites/UI/NailsUpIcon.png" type="Texture" id=45]
+[ext_resource path="res://Sprites/UI/MegaBUpIcon.png" type="Texture" id=46]
+[ext_resource path="res://Sprites/UI/ScatterUpIcon.png" type="Texture" id=47]
+[ext_resource path="res://Sprites/UI/MineUpIcon.png" type="Texture" id=48]
+[ext_resource path="res://Sprites/UI/veh0.png" type="Texture" id=49]
+[ext_resource path="res://Sprites/UI/veh1.png" type="Texture" id=50]
+[ext_resource path="res://Sprites/UI/veh4.png" type="Texture" id=51]
+[ext_resource path="res://Sprites/UI/Frame.png" type="Texture" id=52]
+[ext_resource path="res://Scenes/Indicators.tres" type="StyleBox" id=53]
+[ext_resource path="res://Scenes/IndicatorLow.tres" type="StyleBox" id=54]
+[ext_resource path="res://Scenes/HealthLow.tres" type="StyleBox" id=55]
+[ext_resource path="res://Scenes/HealthHigh.tres" type="StyleBox" id=56]
+[ext_resource path="res://Scenes/ArmorHigh.tres" type="StyleBox" id=57]
+[ext_resource path="res://Sprites/UI/FrameTop.png" type="Texture" id=58]
+[ext_resource path="res://Sprites/UI/veh5.png" type="Texture" id=59]
+[ext_resource path="res://Sprites/UI/veh3.png" type="Texture" id=60]
+[ext_resource path="res://Sprites/UI/BossBar.png" type="Texture" id=61]
+[ext_resource path="res://Sprites/UI/BossBarBG.png" type="Texture" id=62]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0784314, 0.0745098, 0.0745098, 1 )
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = ExtResource( 11 )
+shader_param/target = Vector2( 0.5, 0.5 )
+shader_param/intensity = 1.0
+shader_param/BWintensity = 10.0
+
+[sub_resource type="ShaderMaterial" id=8]
+shader = ExtResource( 13 )
+shader_param/strength = 0.2
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=12]
+
+[sub_resource type="StyleBoxEmpty" id=17]
+
+[sub_resource type="StyleBoxEmpty" id=15]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=10]
+
+[sub_resource type="StyleBoxEmpty" id=11]
+
+[sub_resource type="StyleBoxEmpty" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=14]
+
+[sub_resource type="StyleBoxEmpty" id=16]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 2 )
+
+[node name="Health" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.5
+margin_top = -26.0
+margin_right = 83.5
+margin_bottom = -10.0
+custom_styles/fg = ExtResource( 56 )
+custom_styles/bg = ExtResource( 55 )
+rounded = true
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Armor" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -83.5
+margin_top = -43.0
+margin_right = 83.5
+margin_bottom = -29.0
+custom_styles/fg = ExtResource( 57 )
+custom_styles/bg = SubResource( 4 )
+rounded = true
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="IndicatorBG" type="ColorRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -25.0
+margin_right = -196.0
+margin_bottom = -6.0
+color = Color( 0.490196, 0, 0, 1 )
+
+[node name="MainGunIndicator" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -34.0
+margin_top = -156.0
+margin_right = -4.0
+margin_bottom = -142.0
+custom_styles/fg = ExtResource( 53 )
+custom_styles/bg = ExtResource( 54 )
+value = 100.0
+percent_visible = false
+
+[node name="Placeable" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -239.0
+margin_top = -25.0
+margin_right = -224.0
+margin_bottom = -7.0
+custom_styles/fg = ExtResource( 53 )
+custom_styles/bg = ExtResource( 54 )
+rounded = true
+percent_visible = false
+
+[node name="ChainAttack" type="ProgressBar" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -217.0
+margin_top = -25.0
+margin_right = -198.0
+margin_bottom = -6.0
+custom_styles/fg = ExtResource( 53 )
+custom_styles/bg = ExtResource( 54 )
+rounded = true
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Frame" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 52 )
+stretch_mode = 1
+
+[node name="BossBar" type="TextureProgress" parent="Frame"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -118.5
+margin_top = 10.0
+margin_right = 119.5
+margin_bottom = 21.0
+texture_under = ExtResource( 62 )
+texture_progress = ExtResource( 61 )
+
+[node name="BoostIndicator" type="ColorRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -84.0
+margin_top = -84.0
+margin_right = -81.0
+margin_bottom = -18.0
+rect_rotation = 50.0
+rect_pivot_offset = Vector2( 1.5, 0 )
+color = Color( 0.572549, 0.14902, 0.14902, 1 )
+
+[node name="SlowIndicator" type="ColorRect" parent="."]
+visible = false
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = -59.0
+margin_right = -34.0
+margin_bottom = -35.0
+rect_rotation = -120.0
+rect_pivot_offset = Vector2( 1, 24 )
+color = Color( 0.592157, 0.14902, 0.14902, 1 )
+
+[node name="FrameTop" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 58 )
+stretch_mode = 1
+
+[node name="ScrapLabel" type="RichTextLabel" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = -42.0
+margin_right = 181.0
+margin_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/default_color = Color( 0.929412, 0.929412, 0.929412, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+text = "  0000000"
+scroll_active = false
+
+[node name="PauseShader" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="PauseMenu" type="VBoxContainer" parent="."]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 32, 31 )
+alignment = 1
+
+[node name="Exit" type="Button" parent="PauseMenu"]
+material = SubResource( 8 )
+margin_left = 620.0
+margin_top = 281.0
+margin_right = 766.0
+margin_bottom = 388.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
+custom_colors/font_color_hover = Color( 0.713726, 0.713726, 0.713726, 1 )
+custom_colors/font_color_pressed = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_fonts/font = ExtResource( 12 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Exit"
+flat = true
+
+[node name="Resume" type="Button" parent="PauseMenu"]
+material = SubResource( 8 )
+margin_left = 563.0
+margin_top = 392.0
+margin_right = 823.0
+margin_bottom = 499.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.666667, 0.666667, 0.666667, 1 )
+custom_colors/font_color = Color( 0.866667, 0.866667, 0.866667, 1 )
+custom_colors/font_color_hover = Color( 0.713726, 0.713726, 0.713726, 1 )
+custom_colors/font_color_pressed = Color( 0.760784, 0.760784, 0.760784, 1 )
+custom_fonts/font = ExtResource( 12 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+text = "Resume"
+flat = true
+
+[node name="UpgradeMenuBG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 14 )
+expand = true
+
+[node name="UpgradeMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Specials" type="HBoxContainer" parent="UpgradeMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -373.5
+margin_top = -225.0
+margin_right = 374.5
+margin_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+upgrades = [ NodePath("Specials1"), NodePath("Specials2"), NodePath("Specials3"), NodePath("Specials4"), NodePath("Specials5"), NodePath("Specials6") ]
+upgradesCost = [ 500, 1000, 5000, 5000, 5000, 5000 ]
+upgradeBought = [ false, false, false, false, false, false ]
+specials = true
+descriptions = [ "Boost - Hold Shift to Go Faster! Must recharge a bit once depleted.", "Ramming Bonus - Insta-Kill Enemies With Lower Mass Than You! Receive No Damage!", "Additional 2x Health!", "Additional 2x Armor!", "Chain Attack - Hold C and Click to Shoot a Special Bullet That Kills Enemies Close to The Target.", "Slow Time - Half Speed Gameplay! Hold Q to use. Must recharge a bit once depleted." ]
+
+[node name="Specials" type="Label" parent="UpgradeMenu/Specials"]
+visible = false
+margin_top = 28.0
+margin_right = 52.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Specials"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Specials1" type="Button" parent="UpgradeMenu/Specials"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+margin_left = 82.0
+margin_right = 146.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 12 )
+custom_styles/pressed = SubResource( 12 )
+custom_styles/focus = SubResource( 12 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 12 )
+disabled = true
+icon = ExtResource( 4 )
+flat = true
+icon_align = 1
+
+[node name="Specials2" type="Button" parent="UpgradeMenu/Specials"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+margin_left = 186.0
+margin_right = 250.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 15 )
+disabled = true
+icon = ExtResource( 19 )
+flat = true
+icon_align = 1
+
+[node name="Specials3" type="Button" parent="UpgradeMenu/Specials"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+margin_left = 290.0
+margin_right = 354.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 15 )
+disabled = true
+icon = ExtResource( 7 )
+flat = true
+icon_align = 1
+
+[node name="Specials4" type="Button" parent="UpgradeMenu/Specials"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+margin_left = 394.0
+margin_right = 458.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 15 )
+disabled = true
+icon = ExtResource( 8 )
+flat = true
+icon_align = 1
+
+[node name="Specials5" type="Button" parent="UpgradeMenu/Specials"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+margin_left = 498.0
+margin_right = 562.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 15 )
+disabled = true
+icon = ExtResource( 10 )
+flat = true
+icon_align = 1
+
+[node name="Specials6" type="Button" parent="UpgradeMenu/Specials"]
+modulate = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+margin_left = 602.0
+margin_right = 666.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 15 )
+custom_styles/pressed = SubResource( 15 )
+custom_styles/focus = SubResource( 15 )
+custom_styles/disabled = SubResource( 17 )
+custom_styles/normal = SubResource( 15 )
+disabled = true
+icon = ExtResource( 9 )
+flat = true
+icon_align = 1
+
+[node name="SpecialsDesc" type="Label" parent="UpgradeMenu"]
+anchor_top = 0.841026
+anchor_right = 1.0
+anchor_bottom = 0.858974
+margin_top = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_colors/font_color = Color( 0.199219, 0.199219, 0.199219, 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "Mouse over a special upgrade to view its details."
+align = 1
+valign = 1
+
+[node name="Start" type="Button" parent="UpgradeMenu"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -300.0
+margin_top = -110.0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.227451, 0.227451, 0.227451, 1 )
+custom_colors/font_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_colors/font_color_hover = Color( 0.227451, 0.227451, 0.227451, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/hover = SubResource( 9 )
+custom_styles/pressed = SubResource( 10 )
+custom_styles/focus = SubResource( 10 )
+custom_styles/disabled = SubResource( 10 )
+custom_styles/normal = SubResource( 10 )
+text = "Ready!"
+flat = true
+
+[node name="ScrapLabelUpgradeMenu" type="Label" parent="UpgradeMenu"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -11.0
+margin_top = -110.0
+margin_right = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+custom_colors/font_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_fonts/font = ExtResource( 17 )
+text = "0"
+align = 1
+valign = 1
+
+[node name="Back" type="Button" parent="UpgradeMenu"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_top = -110.0
+margin_right = 300.0
+mouse_default_cursor_shape = 2
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color_focus = Color( 0.227451, 0.227451, 0.227451, 1 )
+custom_colors/font_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+custom_colors/font_color_hover = Color( 0.227451, 0.227451, 0.227451, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 15 )
+custom_styles/hover = SubResource( 11 )
+custom_styles/pressed = SubResource( 11 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/disabled = SubResource( 11 )
+custom_styles/normal = SubResource( 11 )
+text = "Back"
+
+[node name="PopUp" parent="UpgradeMenu" instance=ExtResource( 6 )]
+anchor_left = 0.502523
+anchor_top = 0.352564
+anchor_right = 0.502523
+anchor_bottom = 0.352564
+margin_left = -53.9994
+margin_top = -33.9999
+margin_right = 10.0006
+margin_bottom = 30.0001
+grow_horizontal = 2
+grow_vertical = 2
+icon = ExtResource( 49 )
+type = "Vehicle"
+typeLabel = "Vehicle"
+
+[node name="PopUp2" parent="UpgradeMenu" instance=ExtResource( 6 )]
+anchor_left = 0.645278
+anchor_top = 0.547436
+anchor_right = 0.645278
+anchor_bottom = 0.547436
+icon = ExtResource( 23 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+type = "Health"
+typeLabel = "Health"
+
+[node name="PopUp3" parent="UpgradeMenu" instance=ExtResource( 6 )]
+anchor_left = 0.321557
+anchor_top = 0.498718
+anchor_right = 0.321557
+anchor_bottom = 0.498718
+icon = ExtResource( 38 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+type = "Armor"
+typeLabel = "Armor"
+
+[node name="PopUp4" parent="UpgradeMenu" instance=ExtResource( 6 )]
+anchor_left = 0.713771
+anchor_top = 0.365385
+anchor_right = 0.713771
+anchor_bottom = 0.365385
+icon = ExtResource( 26 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+type = "Auto"
+typeLabel = "Auto Gun"
+
+[node name="PopUp5" parent="UpgradeMenu" instance=ExtResource( 6 )]
+anchor_left = 0.338861
+anchor_top = 0.158974
+anchor_right = 0.338861
+anchor_bottom = 0.158974
+icon = ExtResource( 27 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+type = "Main"
+typeLabel = "Main Gun"
+
+[node name="PopUp6" parent="UpgradeMenu" instance=ExtResource( 6 )]
+anchor_left = 0.60274
+anchor_top = 0.142308
+anchor_right = 0.60274
+anchor_bottom = 0.142308
+margin_left = -6.00037
+margin_top = -35.0002
+margin_right = 57.9996
+margin_bottom = 28.9998
+icon = ExtResource( 26 )
+type = "Place"
+typeLabel = "Placeable"
+
+[node name="PopUpBG" type="Panel" parent="UpgradeMenu"]
+visible = false
+modulate = Color( 0, 0, 0, 0.901961 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Vehicle" type="HBoxContainer" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.353846
+anchor_right = 0.5
+anchor_bottom = 0.353846
+margin_left = -390.5
+margin_top = -35.0
+margin_right = 390.5
+margin_bottom = 35.0
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+upgrades = [ NodePath("Type1"), NodePath("Type2"), NodePath("Type3"), NodePath("Type4"), NodePath("Type5"), NodePath("Type6") ]
+upgradesCost = [ 0, 500, 1000, 2000, 5000, 10000 ]
+upgradeBought = [ true, false, false, false, false, false ]
+type = true
+descriptions = [ "Basic Buggy - Agile but Weak.", "Armored Buggy - Agile and Well Built.", "Battle Bus - Slower, but Strong.", "Armored Battle Bus - Not as Slow, and a Bit Stronger.", "Tanker - A Bit Faster, and Quite Strong.", "Armored Tanker - Very Strong." ]
+
+[node name="Type1" type="Button" parent="UpgradeMenu/Vehicle"]
+margin_left = 98.0
+margin_right = 162.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+icon = ExtResource( 49 )
+flat = true
+icon_align = 1
+
+[node name="Type2" type="Button" parent="UpgradeMenu/Vehicle"]
+margin_left = 202.0
+margin_right = 266.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+disabled = true
+icon = ExtResource( 50 )
+flat = true
+icon_align = 1
+
+[node name="Type3" type="Button" parent="UpgradeMenu/Vehicle"]
+margin_left = 306.0
+margin_right = 370.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+disabled = true
+icon = ExtResource( 16 )
+flat = true
+icon_align = 1
+
+[node name="Type4" type="Button" parent="UpgradeMenu/Vehicle"]
+margin_left = 410.0
+margin_right = 474.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+disabled = true
+icon = ExtResource( 60 )
+flat = true
+icon_align = 1
+
+[node name="Type5" type="Button" parent="UpgradeMenu/Vehicle"]
+margin_left = 514.0
+margin_right = 578.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+disabled = true
+icon = ExtResource( 51 )
+flat = true
+icon_align = 1
+
+[node name="Type6" type="Button" parent="UpgradeMenu/Vehicle"]
+margin_left = 618.0
+margin_right = 682.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 13 )
+custom_styles/pressed = SubResource( 13 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/disabled = SubResource( 13 )
+custom_styles/normal = SubResource( 13 )
+disabled = true
+icon = ExtResource( 59 )
+flat = true
+icon_align = 1
+
+[node name="Vehicle Base" type="Label" parent="UpgradeMenu/Vehicle"]
+visible = false
+margin_top = 28.0
+margin_right = 85.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Vehicle Level"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="HBoxContainer" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.353846
+anchor_right = 0.5
+anchor_bottom = 0.353846
+margin_left = -387.5
+margin_top = -35.0
+margin_right = 387.5
+margin_bottom = 35.0
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+upgrades = [ NodePath("Health1"), NodePath("Health2"), NodePath("Health3"), NodePath("Health4"), NodePath("Health5"), NodePath("Health6") ]
+upgradesCost = [ 0, 500, 1000, 2000, 4000, 10000 ]
+upgradeBought = [ true, false, false, false, false, false ]
+health = true
+descriptions = [ "Base Vehicle Health", "Increase Health X 1.1", "Increase Health X 1.3", "Increase Health X 1.5", "Increase Health X 2.0", "Increase Health X 2.5" ]
+
+[node name="Health" type="Label" parent="UpgradeMenu/Health"]
+visible = false
+margin_top = 28.0
+margin_right = 79.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Health Mult."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health1" type="Button" parent="UpgradeMenu/Health"]
+margin_left = 95.0
+margin_right = 159.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 23 )
+flat = true
+icon_align = 1
+
+[node name="Health2" type="Button" parent="UpgradeMenu/Health"]
+margin_left = 199.0
+margin_right = 263.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 21 )
+flat = true
+icon_align = 1
+
+[node name="Health3" type="Button" parent="UpgradeMenu/Health"]
+margin_left = 303.0
+margin_right = 367.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 24 )
+flat = true
+icon_align = 1
+
+[node name="Health4" type="Button" parent="UpgradeMenu/Health"]
+margin_left = 407.0
+margin_right = 471.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 22 )
+flat = true
+icon_align = 1
+
+[node name="Health5" type="Button" parent="UpgradeMenu/Health"]
+margin_left = 511.0
+margin_right = 575.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 25 )
+flat = true
+icon_align = 1
+
+[node name="Health6" type="Button" parent="UpgradeMenu/Health"]
+margin_left = 615.0
+margin_right = 679.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 20 )
+flat = true
+icon_align = 1
+
+[node name="Armor" type="HBoxContainer" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.353846
+anchor_right = 0.5
+anchor_bottom = 0.353846
+margin_left = -386.5
+margin_top = -35.0
+margin_right = 386.5
+margin_bottom = 35.0
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+upgrades = [ NodePath("Armor1"), NodePath("Armor2"), NodePath("Armor3"), NodePath("Armor4"), NodePath("Armor5"), NodePath("Armor6") ]
+upgradesCost = [ 0, 500, 1000, 2000, 4000, 10000 ]
+upgradeBought = [ true, false, false, false, false, false ]
+armor = true
+descriptions = [ "Base Vehicle Armor", "Increase Armor X 1.1", "Increase Armor X 1.3", "Increase Armor X 1.5", "Increase Armor X 2.0", "Increase Armor X 2.5" ]
+
+[node name="Armor" type="Label" parent="UpgradeMenu/Armor"]
+visible = false
+margin_top = 28.0
+margin_right = 77.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Armor Mult."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Armor1" type="Button" parent="UpgradeMenu/Armor"]
+margin_left = 94.0
+margin_right = 158.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 38 )
+flat = true
+icon_align = 1
+
+[node name="Armor2" type="Button" parent="UpgradeMenu/Armor"]
+margin_left = 198.0
+margin_right = 262.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 42 )
+flat = true
+icon_align = 1
+
+[node name="Armor3" type="Button" parent="UpgradeMenu/Armor"]
+margin_left = 302.0
+margin_right = 366.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 40 )
+flat = true
+icon_align = 1
+
+[node name="Armor4" type="Button" parent="UpgradeMenu/Armor"]
+margin_left = 406.0
+margin_right = 470.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 41 )
+flat = true
+icon_align = 1
+
+[node name="Armor5" type="Button" parent="UpgradeMenu/Armor"]
+margin_left = 510.0
+margin_right = 574.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 8 )
+flat = true
+icon_align = 1
+
+[node name="Armor6" type="Button" parent="UpgradeMenu/Armor"]
+margin_left = 614.0
+margin_right = 678.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 39 )
+flat = true
+icon_align = 1
+
+[node name="MainGun" type="HBoxContainer" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.353846
+anchor_right = 0.5
+anchor_bottom = 0.353846
+margin_left = -378.5
+margin_top = -35.0
+margin_right = 378.5
+margin_bottom = 35.0
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+upgrades = [ NodePath("MainGun1"), NodePath("MainGun2"), NodePath("MainGun3"), NodePath("MainGun4"), NodePath("MainGun5"), NodePath("MainGun6") ]
+upgradesCost = [ 0, 100, 500, 1500, 3000, 5000 ]
+upgradeBought = [ true, false, false, false, false, false ]
+main = true
+descriptions = [ "Basic Main Gun", "Increased Fire Rate.", "Increased Damage and Fire Rate.", "Increased Fire Rate, Greatly Increased Damage.", "Greatly Increased Damage and Fire Rate.", "Disgusting Fire Rate and Damage." ]
+
+[node name="MainGun" type="Label" parent="UpgradeMenu/MainGun"]
+visible = false
+margin_top = 28.0
+margin_right = 61.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Main Gun"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainGun1" type="Button" parent="UpgradeMenu/MainGun"]
+margin_left = 86.0
+margin_right = 150.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 27 )
+flat = true
+icon_align = 1
+
+[node name="MainGun2" type="Button" parent="UpgradeMenu/MainGun"]
+margin_left = 190.0
+margin_right = 254.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 28 )
+flat = true
+icon_align = 1
+
+[node name="MainGun3" type="Button" parent="UpgradeMenu/MainGun"]
+margin_left = 294.0
+margin_right = 358.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 30 )
+flat = true
+icon_align = 1
+
+[node name="MainGun4" type="Button" parent="UpgradeMenu/MainGun"]
+margin_left = 398.0
+margin_right = 462.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 29 )
+flat = true
+icon_align = 1
+
+[node name="MainGun5" type="Button" parent="UpgradeMenu/MainGun"]
+margin_left = 502.0
+margin_right = 566.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 32 )
+flat = true
+icon_align = 1
+
+[node name="MainGun6" type="Button" parent="UpgradeMenu/MainGun"]
+margin_left = 606.0
+margin_right = 670.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 31 )
+flat = true
+icon_align = 1
+
+[node name="AutoFire" type="HBoxContainer" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.353846
+anchor_right = 0.5
+anchor_bottom = 0.353846
+margin_left = -384.0
+margin_top = -35.0
+margin_right = 384.0
+margin_bottom = 35.0
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+upgrades = [ NodePath("Auto1"), NodePath("Auto2"), NodePath("Auto3"), NodePath("Auto4"), NodePath("Auto5"), NodePath("Auto6") ]
+upgradesCost = [ 0, 500, 1000, 2000, 4000, 10000 ]
+upgradeBought = [ true, false, false, false, false, false ]
+auto = true
+descriptions = [ "No Auto Gun.", "Basic Auto Gun.", "Increased Fire Rate.", "Increased Damage and Fire Rate.", "Increased Fire Rate, Greatly Increased Damage.", "Greatly Increased Damage and Fire Rate." ]
+
+[node name="Auto" type="Label" parent="UpgradeMenu/AutoFire"]
+visible = false
+margin_top = 28.0
+margin_right = 72.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Auto Turret"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Auto1" type="Button" parent="UpgradeMenu/AutoFire"]
+margin_left = 92.0
+margin_right = 156.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+icon = ExtResource( 26 )
+flat = true
+icon_align = 1
+
+[node name="Auto2" type="Button" parent="UpgradeMenu/AutoFire"]
+margin_left = 196.0
+margin_right = 260.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 34 )
+flat = true
+icon_align = 1
+
+[node name="Auto3" type="Button" parent="UpgradeMenu/AutoFire"]
+margin_left = 300.0
+margin_right = 364.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 35 )
+flat = true
+icon_align = 1
+
+[node name="Auto4" type="Button" parent="UpgradeMenu/AutoFire"]
+margin_left = 404.0
+margin_right = 468.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 36 )
+flat = true
+icon_align = 1
+
+[node name="Auto5" type="Button" parent="UpgradeMenu/AutoFire"]
+margin_left = 508.0
+margin_right = 572.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 37 )
+flat = true
+icon_align = 1
+
+[node name="Auto6" type="Button" parent="UpgradeMenu/AutoFire"]
+margin_left = 612.0
+margin_right = 676.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 33 )
+flat = true
+icon_align = 1
+
+[node name="Placeable" type="HBoxContainer" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.353846
+anchor_right = 0.5
+anchor_bottom = 0.353846
+margin_left = -378.5
+margin_top = -35.0
+margin_right = 378.5
+margin_bottom = 35.0
+custom_constants/separation = 40
+alignment = 1
+script = ExtResource( 5 )
+upgrades = [ NodePath("Placeable1"), NodePath("Placeable2"), NodePath("Placeable3"), NodePath("Placeable4"), NodePath("Placeable5"), NodePath("Placeable6") ]
+upgradesCost = [ 100, 500, 1000, 2000, 5000, 10000 ]
+upgradeBought = [ false, false, false, false, false, false ]
+placeable = true
+descriptions = [ "Use E to Drop Nails on the Ground That Stop Enemies in Their Tracks.", "Use E to Drop a Mine That Explodes When an Enemy Hits It.", "Use E to Throw a Bomb at the Mouse Position!", "Use E to Throw a Mega Bomb at the Mouse Position!", "Use E to Throw Multiple Bombs at Once All Around You!", "Use E to Launch a Nuke at the Mouse Position!" ]
+
+[node name="Placeable" type="Label" parent="UpgradeMenu/Placeable"]
+visible = false
+margin_top = 28.0
+margin_right = 61.0
+margin_bottom = 42.0
+hint_tooltip = "Vehicle Level"
+mouse_filter = 1
+text = "Placeable"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Placeable1" type="Button" parent="UpgradeMenu/Placeable"]
+margin_left = 86.0
+margin_right = 150.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 45 )
+flat = true
+icon_align = 1
+
+[node name="Placeable2" type="Button" parent="UpgradeMenu/Placeable"]
+margin_left = 190.0
+margin_right = 254.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 48 )
+flat = true
+icon_align = 1
+
+[node name="Placeable3" type="Button" parent="UpgradeMenu/Placeable"]
+margin_left = 294.0
+margin_right = 358.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 44 )
+flat = true
+icon_align = 1
+
+[node name="Placeable4" type="Button" parent="UpgradeMenu/Placeable"]
+margin_left = 398.0
+margin_right = 462.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 46 )
+flat = true
+icon_align = 1
+
+[node name="Placeable5" type="Button" parent="UpgradeMenu/Placeable"]
+margin_left = 502.0
+margin_right = 566.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 47 )
+flat = true
+icon_align = 1
+
+[node name="Placeable6" type="Button" parent="UpgradeMenu/Placeable"]
+margin_left = 606.0
+margin_right = 670.0
+margin_bottom = 70.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 14 )
+custom_styles/pressed = SubResource( 14 )
+custom_styles/focus = SubResource( 14 )
+custom_styles/disabled = SubResource( 14 )
+custom_styles/normal = SubResource( 14 )
+disabled = true
+icon = ExtResource( 43 )
+flat = true
+icon_align = 1
+
+[node name="UpgradeDesc" type="Label" parent="UpgradeMenu"]
+visible = false
+anchor_top = 0.434615
+anchor_right = 1.0
+anchor_bottom = 0.45641
+margin_top = -7.0
+margin_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = ExtResource( 3 )
+text = "Mouse over an upgrade to view details."
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="UpgradeMenu"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.594872
+anchor_right = 0.5
+anchor_bottom = 0.594872
+margin_left = -38.0
+margin_top = -35.0
+margin_right = 38.0
+margin_bottom = 35.0
+mouse_default_cursor_shape = 2
+custom_styles/hover = SubResource( 16 )
+custom_styles/pressed = SubResource( 16 )
+custom_styles/focus = SubResource( 16 )
+custom_styles/disabled = SubResource( 16 )
+custom_styles/normal = SubResource( 16 )
+icon = ExtResource( 18 )
+flat = true
+icon_align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[connection signal="pressed" from="PauseMenu/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_Resume_pressed"]
+[connection signal="pressed" from="UpgradeMenu/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="UpgradeMenu/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="UpgradeMenu/Button" to="." method="_on_Button_pressed"]

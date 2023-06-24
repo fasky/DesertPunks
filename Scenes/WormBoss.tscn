@@ -1,0 +1,249 @@
+[gd_scene load_steps=42 format=2]
+
+[ext_resource path="res://Sprites/WormSpritesheet.tres" type="SpriteFrames" id=1]
+[ext_resource path="res://Scenes/WormBoss.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/BumpSparks.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/WormBossGroundDisrupt.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/ExpDisruption.png" type="Texture" id=5]
+[ext_resource path="res://Scenes/Trail.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Placeable.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Curve" id=71]
+_data = [ Vector2( 0, 0 ), 0.0, 0.0, 0, 0, Vector2( 0.473881, 0.754545 ), 0.0, 0.0, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="Shader" id=9]
+code = "shader_type canvas_item;
+
+float random(vec2 uv) {
+	return fract(sin(dot(uv, vec2(12.9898, 78.233))) * 438.5453);
+}
+
+uniform float sensitivity : hint_range(0.0, 1.0) = 0.0;
+
+void fragment() {
+	// Get size of texture in pixels
+	float size_x = float(textureSize(TEXTURE, 0).x);
+	float size_y = float(textureSize(TEXTURE, 0).y);
+	// 
+	vec4 pixelColor = texture(TEXTURE, UV);
+	// Create a new \"UV\" which remaps every UV value to a snapped pixel value
+	vec2 UVr = vec2(floor(UV.x*size_x)/size_x, floor(UV.y*size_y)/size_y);
+	// Determine whether pixel should be visible or not
+	float visible = step(sensitivity, random(UVr));
+	// Draw the pixel, or not depending on if it is visible or not
+	COLOR = vec4(pixelColor.r, pixelColor.g, pixelColor.b, min(visible, pixelColor.a));
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 9 )
+shader_param/sensitivity = 0.0
+
+[sub_resource type="AtlasTexture" id=40]
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=41]
+atlas = ExtResource( 4 )
+region = Rect2( 120, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=42]
+atlas = ExtResource( 4 )
+region = Rect2( 240, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=43]
+atlas = ExtResource( 4 )
+region = Rect2( 360, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=44]
+atlas = ExtResource( 4 )
+region = Rect2( 480, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=45]
+atlas = ExtResource( 4 )
+region = Rect2( 600, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=46]
+atlas = ExtResource( 4 )
+region = Rect2( 720, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=47]
+atlas = ExtResource( 4 )
+region = Rect2( 840, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=48]
+atlas = ExtResource( 4 )
+region = Rect2( 960, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=49]
+atlas = ExtResource( 4 )
+region = Rect2( 1080, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=50]
+atlas = ExtResource( 4 )
+region = Rect2( 1200, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=51]
+atlas = ExtResource( 4 )
+region = Rect2( 1320, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=52]
+atlas = ExtResource( 4 )
+region = Rect2( 1440, 0, 120, 120 )
+
+[sub_resource type="AtlasTexture" id=53]
+atlas = ExtResource( 4 )
+region = Rect2( 1560, 0, 120, 120 )
+
+[sub_resource type="SpriteFrames" id=54]
+animations = [ {
+"frames": [ SubResource( 40 ), SubResource( 41 ), SubResource( 42 ), SubResource( 43 ), SubResource( 44 ), SubResource( 45 ), SubResource( 46 ), SubResource( 47 ), SubResource( 48 ), SubResource( 49 ), SubResource( 50 ), SubResource( 51 ), SubResource( 52 ), SubResource( 53 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=55]
+radius = 134.0
+
+[sub_resource type="AtlasTexture" id=56]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=57]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=58]
+atlas = ExtResource( 5 )
+region = Rect2( 256, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=59]
+atlas = ExtResource( 5 )
+region = Rect2( 384, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=60]
+atlas = ExtResource( 5 )
+region = Rect2( 512, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=61]
+atlas = ExtResource( 5 )
+region = Rect2( 640, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=62]
+atlas = ExtResource( 5 )
+region = Rect2( 768, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=63]
+atlas = ExtResource( 5 )
+region = Rect2( 896, 128, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=64]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 256, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=65]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 256, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=66]
+atlas = ExtResource( 5 )
+region = Rect2( 256, 256, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=67]
+atlas = ExtResource( 5 )
+region = Rect2( 384, 256, 128, 128 )
+
+[sub_resource type="AtlasTexture" id=68]
+atlas = ExtResource( 5 )
+region = Rect2( 512, 256, 128, 128 )
+
+[sub_resource type="SpriteFrames" id=69]
+animations = [ {
+"frames": [ SubResource( 56 ), SubResource( 57 ), SubResource( 58 ), SubResource( 59 ), SubResource( 60 ), SubResource( 61 ), SubResource( 62 ), SubResource( 63 ), SubResource( 64 ), SubResource( 65 ), SubResource( 66 ), SubResource( 67 ), SubResource( 68 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=70]
+radius = 136.004
+
+[node name="WormBoss" type="KinematicBody2D" groups=["Enemy", "Worm"]]
+z_index = 1
+script = ExtResource( 2 )
+enemyBomb = ExtResource( 10 )
+sparks = ExtResource( 3 )
+scatterBombPos = [ NodePath("ScatterB1"), NodePath("ScatterB2"), NodePath("ScatterB3"), NodePath("ScatterB4"), NodePath("ScatterB5"), NodePath("ScatterB6") ]
+
+[node name="Trail" type="Line2D" parent="."]
+width = 150.0
+width_curve = SubResource( 71 )
+default_color = Color( 0, 0, 0, 0.0196078 )
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource( 6 )
+targetPath = NodePath("..")
+
+[node name="Worm" type="AnimatedSprite" parent="." groups=["Enemy"]]
+visible = false
+material = SubResource( 7 )
+scale = Vector2( 3, 3 )
+z_index = 10
+frames = ExtResource( 1 )
+frame = 8
+speed_scale = 3.0
+playing = true
+
+[node name="GroundDisrupt" type="AnimatedSprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.670588 )
+scale = Vector2( 3, 3 )
+z_index = 11
+frames = SubResource( 54 )
+frame = 8
+speed_scale = 2.0
+playing = true
+
+[node name="WormCollider" type="CollisionShape2D" parent="." groups=["Enemy", "Worm"]]
+visible = false
+shape = SubResource( 55 )
+disabled = true
+
+[node name="BurstGround" type="AnimatedSprite" parent="."]
+visible = false
+scale = Vector2( 3, 3 )
+z_index = 12
+frames = SubResource( 69 )
+speed_scale = 3.0
+
+[node name="WormDestroyer" type="Area2D" parent="." groups=["Enemy", "Worm"]]
+visible = false
+
+[node name="Col" type="CollisionShape2D" parent="WormDestroyer" groups=["Enemy", "Worm"]]
+shape = SubResource( 70 )
+disabled = true
+
+[node name="ScatterB1" type="Position2D" parent="."]
+position = Vector2( 790, -635 )
+
+[node name="ScatterB2" type="Position2D" parent="."]
+position = Vector2( 1035, -455 )
+
+[node name="ScatterB3" type="Position2D" parent="."]
+position = Vector2( 895, -94 )
+
+[node name="ScatterB4" type="Position2D" parent="."]
+position = Vector2( 1192, -214 )
+
+[node name="ScatterB5" type="Position2D" parent="."]
+position = Vector2( 1039, 429 )
+
+[node name="ScatterB6" type="Position2D" parent="."]
+position = Vector2( 1231, 144 )
+
+[node name="WormNoises" type="AudioStreamPlayer" parent="."]
+
+[connection signal="tree_exiting" from="." to="." method="_on_WormBoss_tree_exiting"]
+[connection signal="animation_finished" from="BurstGround" to="." method="_on_BurstGround_animation_finished"]
+[connection signal="body_entered" from="WormDestroyer" to="." method="_on_WormDestroyer_body_entered"]

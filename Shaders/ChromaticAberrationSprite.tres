@@ -1,0 +1,18 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+uniform float strength = 1.0;
+
+void fragment() { vec4 output = texture(TEXTURE, UV); float shift = strength / 100.0;
+
+	vec2 red = texture(TEXTURE, vec2(UV.x + shift, UV.y)).ra;
+	vec2 green = texture(TEXTURE, vec2(UV.x, UV.y)).ga;
+	vec2 blue= texture(TEXTURE, vec2(UV.x - shift, UV.y)).ba;
+
+	COLOR = vec4(
+	    red.x * red.y, 
+	    green.x * green.y, 
+	    blue.x * blue.y, 
+	    min(1.0, red.y + green.y + blue.y));
+}"

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Cloud1.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/Cloud.gd" type="Script" id=2]
+
+[node name="Cloud" type="Sprite"]
+modulate = Color( 1, 1, 1, 0.0470588 )
+z_index = 120
+texture = ExtResource( 1 )
+script = ExtResource( 2 )
+sprites = [ "res://Sprites/Cloud1.png", "res://Sprites/Cloud2.png", "res://Sprites/Cloud3.png", "res://Sprites/Cloud4.png", "res://Sprites/Cloud5.png", "res://Sprites/Cloud6.png", "res://Sprites/Cloud7.png", "res://Sprites/Cloud8.png", "res://Sprites/Cloud9.png", "res://Sprites/Cloud10.png" ]
